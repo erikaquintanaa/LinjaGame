@@ -18,5 +18,8 @@ from django.urls import path
 from linjaengine import views
 
 urlpatterns = [
-    path('linja-game/', views.index),
+    path('', views.layout),
+    path('linja-game/', views.layout),
+    path('init-game/', views.init_game),
+
 ]
