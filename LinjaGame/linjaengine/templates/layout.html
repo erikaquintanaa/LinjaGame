@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Juego LINJA</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"> {% block css %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css" integrity="sha256-qj3p6P1fJIV+Ndv7RW1ovZI2UhOuboj9GcODzcNFIN8=" crossorigin="anonymous" /> {% endblock css %}
+</head>
+
+<body>
+    <nav class="black lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo"></a>
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <div id="main">
+        {% block main %}{%endblock%}
+    </div>
+    <br>
+    <div id="initgame" class="">
+        {% block initgame %}{%endblock%}
+    </div>
+    <footer class="page-footer orange">
+        <div class="container">
+            <div class="section">
+                <!--   Icon Section   -->
+                <div class="row">
+                    <div class="col s12 m4">
+                        <div class="icon-block">
+                            <h2 class="center light-black-text"><i class="material-icons">class</i></h2>
+                            <h5 class="center">Mecánica de juego</h5>
+
+                            <p class="light">Juego abstracto de movimiento punto a punto en el que los jugadores intentan avanzar lo más rápido posible sus peones, de forma que cuando todos los peones de un jugador sobrepasen los del rival las posiciones que ocupen sean,
+                                en global, más valiosas. El turno de un jugador consta de dos movimientos, de forma que el primero, de un solo paso determina el rengo del segundo en función de las piezas presentes en el espacio al que se avanzó primero.</p>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m4">
+                        <div class="icon-block">
+                            <h2 class="center light-black-text"><i class="material-icons">group</i></h2>
+                            <h5 class="center">Desarrollo de la partida</h5>
+                            <p>
+                                <strong>Movimiento inicial: </strong> El jugador elije uno de sus peones y lo desplaza hacia delante una posición o lo suficientemente simple diagonal.
+                            </p>
+                            <p>
+                                <strong>Movimiento secundario </strong> El jugador elige uno de sus peones y lo desplaza hacia adelante tantas posiciones como peones haya en la casilla (antes de su movimiento inicial) a la que el peón del movimiento inicial
+                                avanzó. El jugador debe, siempre que sea posible emplear todos los puntos de avance en este segundo movimiento y con un solo peón.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="col s12 m4">
+                        <div class="icon-block">
+                            <h2 class="center light-black-text"><i class="material-icons">check</i></h2>
+                            <h5 class="center">Fin de la partida</h5>
+                            <p class="light">La partida finaliza justo al término del turno del jugador para el cual todos sus peones han sobrepasado los del rival.</p>
+                            <p>Los jugadores suman puntos según la posición de sus peones, por cada peón que haya alcanzado la fila de inicio del rival, la penúltima fila de llegada, antepenúltima fila de llegada y por cada peón que haya alcanzado la cuarta
+                                fila.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br><br>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Elaborado por <a class="orange-text text-lighten-3" href="http://materializecss.com">Ariel Sanchez y Erika Quintana</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

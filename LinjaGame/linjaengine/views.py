@@ -2,6 +2,9 @@ from django.shortcuts import render,HttpResponse
 
 # Create your views here.
 
-def inicio (request):
+def layout (request):
     print('inicio')
-    return HttpResponse('<h1>Hola mundo</h1>')
+    return render(request,'main.html')
+
+def init_game (request):
+    return render(request,'init-game.html')
