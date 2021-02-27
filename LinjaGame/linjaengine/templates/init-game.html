@@ -1,33 +1,32 @@
 {% extends 'layout.html' %}{%block initgame%}
-<br>
-{% load static %}
+<br> {% load static %}
 <div class="row">
     <div class="col s7 push-s5">
         <span class="flow-text">
-            <div class="row">
+            <div class="row" style="background-color: blueviolet;" ondragleave="dragLeave(event)">
                 <div class="col s1">
-                  <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
                 </div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
                 </div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
                 </div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
+                  <img draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
                 </div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
+                  <img draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
                 </div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
+                  <img draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
                 </div>
             </div>
 
             <img src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-            <div class="row">
+            <div class="row" ondragover="drop(event)" style="background-color: blueviolet;">
                 <div class="col s1">
                   <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
                 </div>
@@ -41,22 +40,7 @@
             </div>
             <img src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-            <div class="row">
-                <div class="col s1">
-                  <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
-                </div>
-                <div class="col s1"></div>
-                <div class="col s1"></div>
-                <div class="col s1"></div>
-                <div class="col s1"></div>
-                <div class="col s1">
-                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
-                </div>
-            </div>
-
-            <img src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
-
-            <div class="row">
+            <div class="row" ondragover="drop(event)">
                 <div class="col s1">
                   <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
                 </div>
@@ -71,7 +55,22 @@
 
             <img src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-            <div class="row">
+            <div class="row" ondragover="drop(event)">
+                <div class="col s1">
+                  <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
+                </div>
+                <div class="col s1"></div>
+                <div class="col s1"></div>
+                <div class="col s1"></div>
+                <div class="col s1"></div>
+                <div class="col s1">
+                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
+                </div>
+            </div>
+
+            <img src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
+
+            <div class="row" ondragover="drop(event)">
               <div class="col s1">
                 <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
               </div>
@@ -86,7 +85,7 @@
 
             <img src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-            <div class="row">
+            <div class="row" ondragover="drop(event)">
               <div class="col s1">
                 <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
               </div>
@@ -101,7 +100,7 @@
 
             <img src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-            <div class="row">
+            <div class="row" ondragover="drop(event)">
               <div class="col s1">
                 <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
               </div>
@@ -116,7 +115,7 @@
 
             <img src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-            <div class="row">
+            <div class="row" ondragover="drop(event)">
                 <div class="col s1">
                   <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
                 </div>
@@ -135,68 +134,6 @@
                 <div class="col s1">
                   <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
                 </div>
-                <div class="col s1">1</div>
-                <div class="col s1">2</div>
-                <div class="col s1">3</div>
-                <div class="col s1">4</div>
-                <div class="col s1">5</div>
-                <div class="col s1">6</div>
-            </div>
-            <div class="row">
-                <div class="col s1">1</div>
-                <div class="col s1">2</div>
-                <div class="col s1">3</div>
-                <div class="col s1">4</div>
-                <div class="col s1">5</div>
-                <div class="col s1">6</div>
-            </div>
-            <div class="row">
-                <div class="col s1">1</div>
-                <div class="col s1">2</div>
-                <div class="col s1">3</div>
-                <div class="col s1">4</div>
-                <div class="col s1">5</div>
-                <div class="col s1">6</div>
-            </div>
-            <div class="row">
-                <div class="col s1">1</div>
-                <div class="col s1">2</div>
-                <div class="col s1">3</div>
-                <div class="col s1">4</div>
-                <div class="col s1">5</div>
-                <div class="col s1">6</div>
-            </div>
-            <div class="row">
-                <div class="col s1">1</div>
-                <div class="col s1">2</div>
-                <div class="col s1">3</div>
-                <div class="col s1">4</div>
-                <div class="col s1">5</div>
-                <div class="col s1">6</div>
-            </div>
-            <div class="row">
-                <div class="col s1">1</div>
-                <div class="col s1">2</div>
-                <div class="col s1">3</div>
-                <div class="col s1">4</div>
-                <div class="col s1">5</div>
-                <div class="col s1">6</div>
-            </div>
-            <div class="row">
-                <div class="col s1">1</div>
-                <div class="col s1">2</div>
-                <div class="col s1">3</div>
-                <div class="col s1">4</div>
-                <div class="col s1">5</div>
-                <div class="col s1">6</div>
-            </div>
-            <div class="row">
-                <div class="col s1">1</div>
-                <div class="col s1">2</div>
-                <div class="col s1">3</div>
-                <div class="col s1">4</div>
-                <div class="col s1">5</div>
-                <div class="col s1">6</div>
             </div>
         </span>
     </div>
@@ -222,5 +159,45 @@
         </span>
     </div>
 </div>
-<br>{%endblock%}
+<script>
+    console.log('Hola erika....')
+    var dragged;
 
+    function dragIniciado(event) {
+        dragged = event.target;
+        event.target.style.opacity = .5;
+        console.log('dragIniciado')
+    }
+
+    function dragFinalizado(event) {
+        event.target.style.opacity = "";
+        console.log('dragFinalizado')
+    }
+
+    function dragEnter(event) {
+        console.log('dragEnter', event.target.className)
+        if (event.target.className == "row") {
+            event.target.style.background = "yellow";
+        }
+    }
+
+    function dragLeave(event) {
+        console.log('dragLeave', event.target.className)
+        if (event.target.className == "row") {
+            event.target.style.background = "";
+        }
+    }
+
+    function drop(event) {
+        console.log('drop')
+        event.preventDefault();
+        // move dragged elem to the selected drop target
+        console.log('drop', dragged)
+        if (event.target.className == "row") {
+            event.target.style.background = "";
+            dragged.parentNode.removeChild(dragged);
+            event.target.appendChild(dragged);
+        }
+    }
+</script>
+<br>{%endblock%}

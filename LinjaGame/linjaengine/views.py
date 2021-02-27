@@ -8,3 +8,4 @@ def layout (request):
 
 def init_game (request):
     return render(request,'init-game.html')
+
