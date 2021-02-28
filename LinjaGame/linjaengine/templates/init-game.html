@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col s7 push-s5">
         <span class="flow-text">
-            <div class="row" style="background-color: blueviolet;" ondragleave="dragLeave(event)">
+            <div class="row" ondragleave="dragLeave(event)">
                 <div class="col s1">
                   <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
                 </div>
@@ -26,60 +26,45 @@
 
             <img src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-            <div class="row" ondragover="drop(event)" style="background-color: blueviolet;">
+            <div class="row" ondragover="drop(event)" >
                 <div class="col s1">
-                  <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
                 </div>
-                <div class="col s1"></div>
+                <div class="col s1" id="peon1"></div>
                 <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
                 </div>
             </div>
             <img src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
             <div class="row" ondragover="drop(event)">
                 <div class="col s1">
-                  <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
                 </div>
                 <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
-                </div>
-            </div>
-
-            <img src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
-
-            <div class="row" ondragover="drop(event)">
-                <div class="col s1">
-                  <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
-                </div>
-                <div class="col s1"></div>
-                <div class="col s1"></div>
-                <div class="col s1"></div>
-                <div class="col s1"></div>
-                <div class="col s1">
-                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
                 </div>
             </div>
 
             <img src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
             <div class="row" ondragover="drop(event)">
-              <div class="col s1">
-                <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
-              </div>
-              <div class="col s1"></div>
+                <div class="col s1">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
+                </div>
+                <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
                 </div>
             </div>
 
@@ -87,14 +72,14 @@
 
             <div class="row" ondragover="drop(event)">
               <div class="col s1">
-                <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
+                <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
               </div>
               <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
                 </div>
             </div>
 
@@ -102,14 +87,29 @@
 
             <div class="row" ondragover="drop(event)">
               <div class="col s1">
-                <img src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
+                <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
               </div>
               <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1"></div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
+                </div>
+            </div>
+
+            <img src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
+
+            <div class="row" ondragover="drop(event)">
+              <div class="col s1">
+                <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="20px" alt="">
+              </div>
+              <div class="col s1"></div>
+                <div class="col s1"></div>
+                <div class="col s1"></div>
+                <div class="col s1"></div>
+                <div class="col s1">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
                 </div>
             </div>
 
@@ -117,22 +117,22 @@
 
             <div class="row" ondragover="drop(event)">
                 <div class="col s1">
-                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
                 </div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
                 </div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
                 </div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
                 </div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
                 </div>
                 <div class="col s1">
-                  <img src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
+                  <img draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)" id='fichaNegra' src="{% static 'img/peon-rojo.png' %}" width="20px" alt="">
                 </div>
             </div>
         </span>
@@ -159,6 +159,7 @@
         </span>
     </div>
 </div>
+
 <script>
     console.log('Hola erika....')
     var dragged;
@@ -196,6 +197,8 @@
         if (event.target.className == "row") {
             event.target.style.background = "";
             dragged.parentNode.removeChild(dragged);
+            //document.getElementById("peon1").appendChild(dragged);
+            //console.log(event.target);
             event.target.appendChild(dragged);
         }
     }
