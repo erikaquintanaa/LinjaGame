@@ -1,4 +1,4 @@
-# LinjaGame
+#  LinjaGame
 
 Para ejecutar el proyecto usar
 
