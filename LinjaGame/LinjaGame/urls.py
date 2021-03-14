@@ -21,5 +21,5 @@ urlpatterns = [
     path('', views.layout),
     path('linja-game/', views.layout),
     path('init-game/', views.init_game),
-
+    path('engine/', views.engine_game),
 ]

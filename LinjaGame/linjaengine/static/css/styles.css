@@ -1,3 +1,7 @@
-.img-peon{
-  padding-right: 100px 0;
+.img-peon {
+    padding-right: 100px 0;
+}
+
+.tam-fixed-panel {
+    width: 334px !important;
 }
