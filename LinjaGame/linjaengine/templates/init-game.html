@@ -178,7 +178,7 @@
     function sendDataBack(event) {
         console.log(event)
         var objetoEnviar = {
-            "contenido:": event.toString()
+            "contenido": "Hola erika desde FRONT"
         }
         $.post('/engine/', objetoEnviar, function(data, status) {
 
