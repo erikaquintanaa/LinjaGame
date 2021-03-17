@@ -3,7 +3,6 @@
 <div class="row">
     <div class="col s7 push-s5 center">
         <span class="flow-text">
-<<<<<<< HEAD
       <div class="row inicial" ondragover="drop(event)">
         {% csrf_token %}
         <img class="img_base">
@@ -99,7 +98,6 @@
           id='fichaRoja' src="{% static 'img/peon-rojo.png' %}" width="45px" alt="">
       </div>
     </span>
-=======
             <div class="row inicial filaNegra1 filaRoja8" ondragover="drop(event)">
               <img class="img_base filaNegra1 filaRoja8">
 
@@ -189,7 +187,6 @@
 
             </div>
         </span>
->>>>>>> 7cc83af... Se ajusta para que las fichas no se puedan devolver y se mantengan las reglas
     </div>
 
     <div class="col s5 pull-s7" style="width: 30% !important;">
@@ -220,11 +217,8 @@
     function dragIniciado(event) {
         dragged = event.target;
         event.target.style.opacity = .5;
-<<<<<<< HEAD
-=======
         console.log('dragIniciado')
         //console.log(event.target.id);
->>>>>>> 7cc83af... Se ajusta para que las fichas no se puedan devolver y se mantengan las reglas
     }
 
     function dragFinalizado(event) {
@@ -247,7 +241,6 @@
     }
 
     function drop(event) {
-<<<<<<< HEAD
         event.preventDefault();
         if (event.target.className == "row") {
             var x = event.target.innerHTML;
@@ -264,7 +257,6 @@
                 console.log('Tiene ' + cont);
             } else {
                 //alert('Campo no puede tener mas de 6 peones');
-=======
         console.log('drop')
         //event.preventDefault();
         // move dragged elem to the selected drop target
@@ -330,15 +322,12 @@
 
             if(x.substring(i,i+8)=="img_peon"){
               cont++;
->>>>>>> 7cc83af... Se ajusta para que las fichas no se puedan devolver y se mantengan las reglas
             }
           }
 
-<<<<<<< HEAD
         } else if (event.target.className == "row inicial") {
             event.target.style.background = "";
             dragged.parentNode.removeChild(dragged);
-=======
           for (var i = 0; i < x.length; i++) {
             if(x.substring(i,i+8)=="filaRoja"){
               posFila=i;
@@ -354,12 +343,10 @@
             jugador1++;
             dragged.id = "R"+fila;
 
->>>>>>> 7cc83af... Se ajusta para que las fichas no se puedan devolver y se mantengan las reglas
             event.target.appendChild(dragged);
         }
     }
 
-<<<<<<< HEAD
     function sendDataBack(event) {
         console.log(event)
         var objetoEnviar = {
@@ -375,12 +362,10 @@
             }
         })
     }
-=======
         }
       }
       }
 
 
->>>>>>> 7cc83af... Se ajusta para que las fichas no se puedan devolver y se mantengan las reglas
 </script>
 <br>{%endblock%}
