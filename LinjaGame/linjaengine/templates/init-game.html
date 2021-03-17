@@ -209,10 +209,32 @@
   }
 
   function sendDataBack(event1) {
+    var cont =0;
     console.log(event1)
     var dataPeon = event1.outerHTML;
+    var idPeon = '';
+    // offsetParent  --> html tabla
+    var fila = event.target.parentElement.innerHTML;
+    console.log(fila.length);
+    //console.log(dataPeon.length);
+    for (var i = 0; i < fila.length; i++) {
+      if (fila.substring(i, i + 8) == "img_peon") {
+        cont++;
+      }
+    }
+
+    for (var i = 0; i < dataPeon.length; i++) {
+      if (dataPeon.substring(i, i + 3) == "id=") {
+        idPeon = dataPeon.substring(i+4,i+6);
+      }
+    }
+    //console.log(idPeon);
+    //console.log('Hay '+cont);
+
     var objetoEnviar = {
-      "contenido": dataPeon
+      "contenido": dataPeon,
+      "id": idPeon,
+      "Num_Peones_Fila": cont-1,
     }
     $.post('/engine/', objetoEnviar, function (data, status) {
 

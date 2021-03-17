@@ -15,6 +15,10 @@ def init_game (request):
     return render(request,'init-game.html')
 
 def engine_game (request):
-    print('engine_game ----> ',request.POST['contenido'])
+    print()
+    print('Ficha ----> ',request.POST['contenido'])
+    print('Id Ficha ----> ',request.POST['id'])
+    print('Numero en fila ----> ',request.POST['Num_Peones_Fila'])
+    print()
+
     return HttpResponse(respuestaBien)
-    
