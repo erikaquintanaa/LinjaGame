@@ -15,6 +15,6 @@ def init_game (request):
     return render(request,'init-game.html')
 
 def engine_game (request):
-    print('engine_game',request)
+    print('engine_game ----> ',request.POST['contenido'])
     return HttpResponse(respuestaBien)
     
