@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col s7 push-s5 center">
     <span class="flow-text">
-      <div class="row inicial filaNegra1 filaRoja8" ondragover="drop(event)">
+      <div class="row inicial filaNegra1 filaRoja8" id="N1 R8" ondragover="drop(event)">
         {% csrf_token %}
         <img class="img_base filaNegra1 filaRoja8">
         <img class="img_peon" id="N1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
@@ -18,7 +18,7 @@
       <img class="img_peon" src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
 
-      <div class="row filaNegra2 filaRoja7" ondragover="drop(event)" >
+      <div class="row filaNegra2 filaRoja7"  id="N2 R7" ondragover="drop(event)" >
         <img class="img_base filaNegra2 filaRoja7">
         <img class="img_peon" id="N2" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
         <img class="img_peon" id="R7" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
@@ -27,7 +27,7 @@
 
       <img class="img_peon" src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-      <div class="row filaNegra3 filaRoja6" ondragover="drop(event)" >
+      <div class="row filaNegra3 filaRoja6"  id="N3 R6" ondragover="drop(event)" >
         <img class="img_base filaNegra3 filaRoja6">
         <img class="img_peon" id="N3" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
         <img class="img_peon" id="R6" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
@@ -35,7 +35,7 @@
 
       <img class="img_peon" src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-      <div class="row filaNegra4 filaRoja5" ondragover="drop(event)" >
+      <div class="row filaNegra4 filaRoja5"  id="N4 R5" ondragover="drop(event)" >
         <img class="img_base filaNegra4 filaRoja5">
         <img class="img_peon" id="N4" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
         <img class="img_peon" id="R5" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
@@ -43,7 +43,7 @@
 
       <img class="img_peon" src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-      <div class="row filaNegra5 filaRoja4" ondragover="drop(event)" >
+      <div class="row filaNegra5 filaRoja4"  id="N5 R4" ondragover="drop(event)" >
         <img class="img_base filaNegra5 filaRoja4">
         <img class="img_peon" id="N5" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
         <img class="img_peon" id="R4" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
@@ -51,7 +51,7 @@
 
       <img class="img_peon" src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-      <div class="row filaNegra6 filaRoja3" ondragover="drop(event)" >
+      <div class="row filaNegra6 filaRoja3"  id="N6 R3" ondragover="drop(event)" >
         <img class="img_base filaNegra5 filaRoja3">
         <img class="img_peon" id="N6" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
         <img class="img_peon" id="R3" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
@@ -59,7 +59,7 @@
 
       <img class="img_peon" src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-      <div class="row filaNegra7 filaRoja2" ondragover="drop(event)" >
+      <div class="row filaNegra7 filaRoja2"  id="N7 R2" ondragover="drop(event)" >
         <img class="img_base filaNegra7 filaRoja2">
         <img class="img_peon" id="N7" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
         <img class="img_peon" id="R2" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
@@ -67,14 +67,14 @@
 
       <img class="img_peon" src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-      <div class="row inicial filaNegra8 filaRoja1" ondragover="drop(event)">
+      <div class="row inicial filaNegra8 filaRoja1"  id="N8 R1" ondragover="drop(event)">
         <img class="img_base filaNegra8 filaRoja1">
-        <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
-        <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
-        <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
-        <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
-        <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
-        <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
+        <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
+        <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
+        <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
+        <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
+        <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
+        <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
 
       </div>
     </span>
@@ -108,6 +108,8 @@
   var jugadaNegro=0;
   var boolRojo=true;
   var boolNegro=true;
+  var movPeon2=0;
+
   function dragIniciado(event) {
     dragged = event.target;
     event.target.style.opacity = .5;
@@ -120,6 +122,7 @@
     evaluarMovimientos();
     //aqui post
     sendDataBack(event.target);
+    posicionesPeones(event.target);
     console.log('dragFinalizado')
   }
 
@@ -185,6 +188,7 @@
           cont++;
         }
       }
+      movPeon2=cont;
 
       for (var i = 0; i < x.length; i++) {
         if (x.substring(i, i + 9) == "filaNegra") {
@@ -213,6 +217,8 @@
           cont++;
         }
       }
+      movPeon2=cont;
+
 
       for (var i = 0; i < x.length; i++) {
         if (x.substring(i, i + 8) == "filaRoja") {
@@ -234,12 +240,37 @@
 
   }
 
+  function posicionesPeones(evento){
+    //alert('s');
+    var cont1=0;
+    var cont2=0;
+    var cont3=0;
+    var cont4=0;
+    var cont5=0;
+    var cont6=0;
+    var cont7=0;
+    var cont8=0;
+    var x =document.getElementById('N1 R8').innerHTML;
+    for (var i = 0; i < x.length; i++) {
+      if (x.substring(i, i + 3) == "id=") {
+        //console.log('Prueba ----- '+x.substring(i+4,i+5));
+        cont1++;
+      }
+    }
+    console.log('Hay '+cont1+' peones en la fila 1');
+
+
+    //console.log('Ariel - '+x);
+  }
+
   function sendDataBack(event1) {
     var cont =0;
     console.log(event1)
     var dataPeon = event1.outerHTML;
     var idPeon = '';
     // offsetParent  --> html tabla
+    var tabla = event.target.offsetParent.innerHTML;
+
     var fila = event.target.parentElement.innerHTML;
     console.log(fila.length);
     //console.log(dataPeon.length);
@@ -258,9 +289,10 @@
     //console.log('Hay '+cont);
 
     var objetoEnviar = {
-      "contenido": dataPeon,
+      "contenidoPeon": dataPeon,
       "id": idPeon,
       "Num_Peones_Fila": cont-1,
+      "tablaPeones": tabla,
     }
     $.post('/engine/', objetoEnviar, function (data, status) {
 

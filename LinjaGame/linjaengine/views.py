@@ -16,15 +16,36 @@ def init_game (request):
 
 def engine_game (request):
     print()
-    print('Ficha ----> ',request.POST['contenido'])
+    print('Tabla ----> ',request.POST['tablaPeones'])
+    print()
+    print('Ficha ----> ',request.POST['contenidoPeon'])
     print('Id Ficha ----> ',request.POST['id'])
-    print('Numero en fila ----> ',request.POST['Num_Peones_Fila'])
+    #print('Numero en fila ----> ',request.POST['Num_Peones_Fila'])
     print()
-    print(mensaje('hola'))
+    movPeon2 = PeonesMov2(request.POST['Num_Peones_Fila'])
+    print(movPeon2)
     print()
+    tb= analizarTablaPeones(request.POST['tablaPeones'])
+
 
     return HttpResponse(respuestaBien)
 
 
-def mensaje(text):
-    return text
+def PeonesMov2(text):
+    return 'La cantidad de saltos para el peon 2 son de '+text
+
+
+def analizarTablaPeones(tabla):
+    dataCont = len(tabla)
+    data = tabla
+    #print(data)
+    indice = 0
+    while indice < len(data):
+
+        letra = data[indice:indice+28]
+        if(letra == "inicial filaNegra1 filaRoja8"):
+            print(letra)
+
+        indice += 1
+
+    return tabla
