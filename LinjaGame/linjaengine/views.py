@@ -37,10 +37,34 @@ def engine_game (request):
     print('Cantidad en fila 7 ----> ',request.POST['fila7'])
     print('Cantidad en fila 8 ----> ',request.POST['fila8'])
     print()
+    print('Cantidad en fila 1 ----> Hay ',request.POST['fila1'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila1'],'1'),' puntos')
+    print('Cantidad en fila 2 ----> Hay ',request.POST['fila2'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila2'],'2'),' puntos')
+    print('Cantidad en fila 3 ----> Hay ',request.POST['fila3'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila3'],'3'),' puntos')
+    print('Cantidad en fila 4 ----> Hay ',request.POST['fila4'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila4'],'4'),' puntos')
+    print('Cantidad en fila 5 ----> Hay ',request.POST['fila5'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila5'],'4'),' puntos')
+    print('Cantidad en fila 6 ----> Hay ',request.POST['fila6'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila6'],'3'),' puntos')
+    print('Cantidad en fila 7 ----> Hay ',request.POST['fila7'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila7'],'2'),' puntos')
+    print('Cantidad en fila 8 ----> Hay ',request.POST['fila8'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila8'],'1'),' puntos')
 
 
 
     return HttpResponse(respuestaBien)
+
+def ValoresTotalesFila(num,fila):
+    if fila == '1':
+        result=int(num)*5
+
+    if fila == '2':
+        result=int(num)*3
+
+    if fila == '3':
+        result=int(num)*2
+
+    if fila == '4':
+        result=int(num)*1
+
+
+    return result
 
 
 def PeonesMov2(text):
