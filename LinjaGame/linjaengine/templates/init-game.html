@@ -104,7 +104,10 @@
 </div>
 <script>
   var dragged;
-
+  var jugadaRojo=0;
+  var jugadaNegro=0;
+  var boolRojo=true;
+  var boolNegro=true;
   function dragIniciado(event) {
     dragged = event.target;
     event.target.style.opacity = .5;
@@ -114,6 +117,7 @@
 
   function dragFinalizado(event) {
     event.target.style.opacity = "";
+    evaluarMovimientos();
     //aqui post
     sendDataBack(event.target);
     console.log('dragFinalizado')
@@ -137,12 +141,34 @@
       "row inicial filaNegra1 filaRoja8") {
       devolverFichas(30);
 
-
     } else if (event.target.className.includes("row")) {
       devolverFichas(6);
 
     } else {
       console.log('No puede tener mas de 6 peones');
+    }
+  }
+  function evaluarMovimientos(){
+    if(dragged.alt == 'Rojo' && boolRojo==true){
+      jugadaRojo++;
+      //console.log(jugadaRojo);
+      boolNegro=false;
+      boolRojo = true;
+      if(jugadaRojo>=2){
+        jugadaRojo=0;
+        boolRojo = false;
+        boolNegro=true;
+      }
+    }
+    if(dragged.alt == 'Negro' && boolNegro==true){
+      jugadaNegro++;
+      boolRojo=false;
+      boolNegro=true;
+      if(jugadaNegro>=2){
+        jugadaNegro=0;
+        boolRojo = true;
+        boolNegro=false;
+      }
     }
   }
   function devolverFichas(limite) {
@@ -152,7 +178,7 @@
     var cont = 0;
     var fila = 0;
     var posFila = 0;
-    if (dragged.alt == "Negro") {
+    if (dragged.alt == "Negro" && boolNegro==true && jugadaNegro<=2) {
 
       for (var i = 0; i < x.length; i++) {
         if (x.substring(i, i + 8) == "img_peon") {
@@ -179,7 +205,7 @@
 
 
 
-    if (dragged.alt == "Rojo") {
+    if (dragged.alt == "Rojo" && boolRojo==true && jugadaRojo<=2) {
       console.log('Rojo');
 
       for (var i = 0; i < x.length; i++) {

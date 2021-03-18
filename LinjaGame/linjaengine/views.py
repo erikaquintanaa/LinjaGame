@@ -20,5 +20,11 @@ def engine_game (request):
     print('Id Ficha ----> ',request.POST['id'])
     print('Numero en fila ----> ',request.POST['Num_Peones_Fila'])
     print()
+    print(mensaje('hola'))
+    print()
 
     return HttpResponse(respuestaBien)
+
+
+def mensaje(text):
+    return text
