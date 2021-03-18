@@ -122,7 +122,7 @@
     evaluarMovimientos();
     //aqui post
     sendDataBack(event.target);
-    posicionesPeones(event.target);
+    posicionesPeones();
     console.log('dragFinalizado')
   }
 
@@ -240,7 +240,7 @@
 
   }
 
-  function posicionesPeones(evento){
+  function posicionesPeones(){
     //alert('s');
     var cont1=0;
     var cont2=0;
@@ -258,11 +258,84 @@
       }
     }
     console.log('Hay '+cont1+' peones en la fila 1');
+    var x =document.getElementById('N2 R7').innerHTML;
+    for (var i = 0; i < x.length; i++) {
+      if (x.substring(i, i + 3) == "id=") {
+        //console.log('Prueba ----- '+x.substring(i+4,i+5));
+        cont2++;
+      }
+    }
+    console.log('Hay '+cont2+' peones en la fila 2');
+
+    var x =document.getElementById('N3 R6').innerHTML;
+    for (var i = 0; i < x.length; i++) {
+      if (x.substring(i, i + 3) == "id=") {
+        //console.log('Prueba ----- '+x.substring(i+4,i+5));
+        cont3++;
+      }
+    }
+    console.log('Hay '+cont3+' peones en la fila 3');
+
+    var x =document.getElementById('N4 R5').innerHTML;
+    for (var i = 0; i < x.length; i++) {
+      if (x.substring(i, i + 3) == "id=") {
+        //console.log('Prueba ----- '+x.substring(i+4,i+5));
+        cont4++;
+      }
+    }
+    console.log('Hay '+cont4+' peones en la fila 4');
 
 
+    var x =document.getElementById('N5 R4').innerHTML;
+    for (var i = 0; i < x.length; i++) {
+      if (x.substring(i, i + 3) == "id=") {
+        //console.log('Prueba ----- '+x.substring(i+4,i+5));
+        cont5++;
+      }
+    }
+    console.log('Hay '+cont5+' peones en la fila 5');
+
+    var x =document.getElementById('N6 R3').innerHTML;
+    for (var i = 0; i < x.length; i++) {
+      if (x.substring(i, i + 3) == "id=") {
+        //console.log('Prueba ----- '+x.substring(i+4,i+5));
+        cont6++;
+      }
+    }
+    console.log('Hay '+cont6+' peones en la fila 6');
+
+    var x =document.getElementById('N7 R2').innerHTML;
+    for (var i = 0; i < x.length; i++) {
+      if (x.substring(i, i + 3) == "id=") {
+        //console.log('Prueba ----- '+x.substring(i+4,i+5));
+        cont7++;
+      }
+    }
+    console.log('Hay '+cont7+' peones en la fila 7');
+
+
+    var x =document.getElementById('N8 R1').innerHTML;
+    for (var i = 0; i < x.length; i++) {
+      if (x.substring(i, i + 3) == "id=") {
+        //console.log('Prueba ----- '+x.substring(i+4,i+5));
+        cont8++;
+      }
+    }
+    console.log('Hay '+cont8+' peones en la fila 8');
     //console.log('Ariel - '+x);
   }
 
+  function conts(id){
+    var cont=0;
+    var x =document.getElementById(id).innerHTML;
+    for (var i = 0; i < x.length; i++) {
+      if (x.substring(i, i + 3) == "id=") {
+        //console.log('Prueba ----- '+x.substring(i+4,i+5));
+        cont++;
+      }
+    }
+    return cont;
+  }
   function sendDataBack(event1) {
     var cont =0;
     console.log(event1)
@@ -287,12 +360,29 @@
     }
     //console.log(idPeon);
     //console.log('Hay '+cont);
+    var cont1= conts('N1 R8');
+    var cont2= conts('N2 R7');
+    var cont3= conts('N3 R6');
+    var cont4= conts('N4 R5');
+    var cont5= conts('N5 R4');
+    var cont6= conts('N6 R3');
+    var cont7= conts('N7 R2');
+
+    var cont8= conts('N8 R1');
 
     var objetoEnviar = {
       "contenidoPeon": dataPeon,
       "id": idPeon,
       "Num_Peones_Fila": cont-1,
       "tablaPeones": tabla,
+      "fila1":cont1,
+      "fila2":cont2,
+      "fila3":cont3,
+      "fila4":cont4,
+      "fila5":cont5,
+      "fila6":cont6,
+      "fila7":cont7,
+      "fila8":cont8,
     }
     $.post('/engine/', objetoEnviar, function (data, status) {
 

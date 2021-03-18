@@ -27,6 +27,18 @@ def engine_game (request):
     print()
     tb= analizarTablaPeones(request.POST['tablaPeones'])
 
+    print()
+    print('Cantidad en fila 1 ----> ',request.POST['fila1'])
+    print('Cantidad en fila 2 ----> ',request.POST['fila2'])
+    print('Cantidad en fila 3 ----> ',request.POST['fila3'])
+    print('Cantidad en fila 4 ----> ',request.POST['fila4'])
+    print('Cantidad en fila 5 ----> ',request.POST['fila5'])
+    print('Cantidad en fila 6 ----> ',request.POST['fila6'])
+    print('Cantidad en fila 7 ----> ',request.POST['fila7'])
+    print('Cantidad en fila 8 ----> ',request.POST['fila8'])
+    print()
+
+
 
     return HttpResponse(respuestaBien)
 
