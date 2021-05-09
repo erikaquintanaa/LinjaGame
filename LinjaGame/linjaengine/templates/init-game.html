@@ -1,26 +1,22 @@
 {% extends 'layout.html' %} {%block initgame%}
 <br> {% load static %}
 <div class="row">
-    <div class="col s7 push-s5 center">
-        <span class="flow-text">
-      <div class="row inicial" ondragover="drop(event)">
+  <div class="col s7 push-s5 center">
+    <span class="flow-text">
+      <div class="row inicial filaNegra1 filaRoja8" id="N1 R8" ondragover="drop(event)">
         {% csrf_token %}
-        <img class="img_base">
-        <img class="img_peon" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"
-          id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="40px" alt="">
-        <img class="img_peon" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"
-          id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="40px" alt="">
-        <img class="img_peon" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"
-          id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="40px" alt="">
-        <img class="img_peon" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"
-          id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="40px" alt="">
-        <img class="img_peon" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"
-          id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="40px" alt="">
-        <img class="img_peon" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"
-          id='fichaNegra' src="{% static 'img/peon-negro.png' %}" width="40px" alt="">
+        <img class="img_base filaNegra1 filaRoja8">
+        <img class="img_peon" id="N1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
+        <img class="img_peon" id="N1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
+        <img class="img_peon" id="N1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
+        <img class="img_peon" id="N1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
+        <img class="img_peon" id="N1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
+        <img class="img_peon" id="N1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
+
       </div>
 
       <img class="img_peon" src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
+
 
       <div class="row filaNegra2 filaRoja7"  id="N2 R7" ondragover="drop(event)" >
         <img class="img_base filaNegra2 filaRoja7">
@@ -39,7 +35,6 @@
 
       <img class="img_peon" src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
 
-
       <div class="row filaNegra4 filaRoja5"  id="N4 R5" ondragover="drop(event)" >
         <img class="img_base filaNegra4 filaRoja5">
         <img class="img_peon" id="N4" draggable='true' ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">
@@ -47,7 +42,6 @@
       </div>
 
       <img class="img_peon" src="{% static 'img/barra.png' %}" width="370px" height="10px" alt="">
-
 
       <div class="row filaNegra5 filaRoja4"  id="N5 R4" ondragover="drop(event)" >
         <img class="img_base filaNegra5 filaRoja4">
@@ -331,17 +325,44 @@
     //console.log('Ariel - '+x);
   }
 
-  function conts(id){
-    var cont=0;
+  function contNegro(id){
+    var contNegro=0;
+    var x =document.getElementById(id).innerHTML;
+    for (var i = 0; i < x.length; i++) {
+      if (x.substring(i, i + 5) == 'id="N') {
+        //console.log('Prueba ----- '+x.substring(i+4,i+5));
+        contNegro++;
+      }
+    }
+    return contNegro;
+  }
+
+
+  function contTodos(id){
+    var contTodos=0;
     var x =document.getElementById(id).innerHTML;
     for (var i = 0; i < x.length; i++) {
       if (x.substring(i, i + 3) == "id=") {
         //console.log('Prueba ----- '+x.substring(i+4,i+5));
-        cont++;
+        contTodos++;
       }
     }
-    return cont;
+    return contTodos;
   }
+
+  function contRojo(id){
+    var contRojo=0;
+    var x =document.getElementById(id).innerHTML;
+    for (var i = 0; i < x.length; i++) {
+      if (x.substring(i, i + 5) == 'id="R') {
+        //console.log('Prueba ----- '+x.substring(i+4,i+5));
+        contRojo++;
+      }
+    }
+    return contRojo;
+  }
+
+
   function sendDataBack(event1) {
     var cont =0;
     console.log(event1)
@@ -366,29 +387,66 @@
     }
     //console.log(idPeon);
     //console.log('Hay '+cont);
-    var cont1= conts('N1 R8');
-    var cont2= conts('N2 R7');
-    var cont3= conts('N3 R6');
-    var cont4= conts('N4 R5');
-    var cont5= conts('N5 R4');
-    var cont6= conts('N6 R3');
-    var cont7= conts('N7 R2');
 
-    var cont8= conts('N8 R1');
+    var cont1Todos= contTodos('N1 R8');
+    var cont2Todos= contTodos('N2 R7');
+    var cont3Todos= contTodos('N3 R6');
+    var cont4Todos= contTodos('N4 R5');
+    var cont5Todos= contTodos('N5 R4');
+    var cont6Todos= contTodos('N6 R3');
+    var cont7Todos= contTodos('N7 R2');
+    var cont8Todos= contTodos('N8 R1');
 
-    var objetoEnviar = {
+
+    var cont1Negro= contNegro('N1 R8');
+    var cont2Negro= contNegro('N2 R7');
+    var cont3Negro= contNegro('N3 R6');
+    var cont4Negro= contNegro('N4 R5');
+    var cont5Negro= contNegro('N5 R4');
+    var cont6Negro= contNegro('N6 R3');
+    var cont7Negro= contNegro('N7 R2');
+    var cont8Negro= contNegro('N8 R1');
+
+
+    var cont1Rojo= contRojo('N1 R8');
+    var cont2Rojo= contRojo('N2 R7');
+    var cont3Rojo= contRojo('N3 R6');
+    var cont4Rojo= contRojo('N4 R5');
+    var cont5Rojo= contRojo('N5 R4');
+    var cont6Rojo= contRojo('N6 R3');
+    var cont7Rojo= contRojo('N7 R2');
+    var cont8Rojo= contRojo('N8 R1');
+
+
+    objetoEnviar = {
       "contenidoPeon": dataPeon,
       "id": idPeon,
       "Num_Peones_Fila": cont-1,
       "tablaPeones": tabla,
-      "fila1":cont1,
-      "fila2":cont2,
-      "fila3":cont3,
-      "fila4":cont4,
-      "fila5":cont5,
-      "fila6":cont6,
-      "fila7":cont7,
-      "fila8":cont8,
+      "fila1Todos":cont1Todos,
+      "fila2Todos":cont2Todos,
+      "fila3Todos":cont3Todos,
+      "fila4Todos":cont4Todos,
+      "fila5Todos":cont5Todos,
+      "fila6Todos":cont6Todos,
+      "fila7Todos":cont7Todos,
+      "fila8Todos":cont8Todos,
+      "fila1Negro":cont1Negro,
+      "fila2Negro":cont2Negro,
+      "fila3Negro":cont3Negro,
+      "fila4Negro":cont4Negro,
+      "fila5Negro":cont5Negro,
+      "fila6Negro":cont6Negro,
+      "fila7Negro":cont7Negro,
+      "fila8Negro":cont8Negro,
+      "fila1Rojo":cont1Rojo,
+      "fila2Rojo":cont2Rojo,
+      "fila3Rojo":cont3Rojo,
+      "fila4Rojo":cont4Rojo,
+      "fila5Rojo":cont5Rojo,
+      "fila6Rojo":cont6Rojo,
+      "fila7Rojo":cont7Rojo,
+      "fila8Rojo":cont8Rojo,
     }
     $.post('/engine/', objetoEnviar, function (data, status) {
 
