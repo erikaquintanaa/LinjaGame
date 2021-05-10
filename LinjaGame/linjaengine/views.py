@@ -28,25 +28,33 @@ def engine_game (request):
     tb= analizarTablaPeones(request.POST['tablaPeones'])
 
     print()
-    print('Cantidad en fila 1 ----> ',request.POST['fila1'])
-    print('Cantidad en fila 2 ----> ',request.POST['fila2'])
-    print('Cantidad en fila 3 ----> ',request.POST['fila3'])
-    print('Cantidad en fila 4 ----> ',request.POST['fila4'])
-    print('Cantidad en fila 5 ----> ',request.POST['fila5'])
-    print('Cantidad en fila 6 ----> ',request.POST['fila6'])
-    print('Cantidad en fila 7 ----> ',request.POST['fila7'])
-    print('Cantidad en fila 8 ----> ',request.POST['fila8'])
+    print('Cantidad en fila 1 ----> ',request.POST['fila1Todos'])
+    print('Cantidad en fila 2 ----> ',request.POST['fila2Todos'])
+    print('Cantidad en fila 3 ----> ',request.POST['fila3Todos'])
+    print('Cantidad en fila 4 ----> ',request.POST['fila4Todos'])
+    print('Cantidad en fila 5 ----> ',request.POST['fila5Todos'])
+    print('Cantidad en fila 6 ----> ',request.POST['fila6Todos'])
+    print('Cantidad en fila 7 ----> ',request.POST['fila7Todos'])
+    print('Cantidad en fila 8 ----> ',request.POST['fila8Todos'])
     print()
-    print('Cantidad en fila 1 ----> Hay ',request.POST['fila1'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila1'],'1'),' puntos')
-    print('Cantidad en fila 2 ----> Hay ',request.POST['fila2'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila2'],'2'),' puntos')
-    print('Cantidad en fila 3 ----> Hay ',request.POST['fila3'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila3'],'3'),' puntos')
-    print('Cantidad en fila 4 ----> Hay ',request.POST['fila4'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila4'],'4'),' puntos')
-    print('Cantidad en fila 5 ----> Hay ',request.POST['fila5'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila5'],'4'),' puntos')
-    print('Cantidad en fila 6 ----> Hay ',request.POST['fila6'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila6'],'3'),' puntos')
-    print('Cantidad en fila 7 ----> Hay ',request.POST['fila7'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila7'],'2'),' puntos')
-    print('Cantidad en fila 8 ----> Hay ',request.POST['fila8'],' peones que equivalen a ',ValoresTotalesFila(request.POST['fila8'],'1'),' puntos')
+    print('Cantidad en fila 1 ----> Hay ',request.POST['fila1Negro'],' peones negros que equivalen a ',ValoresTotalesFila(request.POST['fila1Negro'],'0'),' puntos')
+    print('Cantidad en fila 2 ----> Hay ',request.POST['fila2Negro'],' peones negros que equivalen a ',ValoresTotalesFila(request.POST['fila2Negro'],'0'),' puntos')
+    print('Cantidad en fila 3 ----> Hay ',request.POST['fila3Negro'],' peones negros que equivalen a ',ValoresTotalesFila(request.POST['fila3Negro'],'0'),' puntos')
+    print('Cantidad en fila 4 ----> Hay ',request.POST['fila4Negro'],' peones negros que equivalen a ',ValoresTotalesFila(request.POST['fila4Negro'],'0'),' puntos')
+    print('Cantidad en fila 5 ----> Hay ',request.POST['fila5Negro'],' peones negros que equivalen a ',ValoresTotalesFila(request.POST['fila5Negro'],'4'),' puntos')
+    print('Cantidad en fila 6 ----> Hay ',request.POST['fila6Negro'],' peones negros que equivalen a ',ValoresTotalesFila(request.POST['fila6Negro'],'3'),' puntos')
+    print('Cantidad en fila 7 ----> Hay ',request.POST['fila7Negro'],' peones negros que equivalen a ',ValoresTotalesFila(request.POST['fila7Negro'],'2'),' puntos')
+    print('Cantidad en fila 8 ----> Hay ',request.POST['fila8Negro'],' peones negros que equivalen a ',ValoresTotalesFila(request.POST['fila8Negro'],'1'),' puntos')
 
-
+    print()
+    print('Cantidad en fila 1 ----> Hay ',request.POST['fila1Rojo'],' peones rojos que equivalen a ',ValoresTotalesFila(request.POST['fila1Rojo'],'1'),' puntos')
+    print('Cantidad en fila 2 ----> Hay ',request.POST['fila2Rojo'],' peones rojos que equivalen a ',ValoresTotalesFila(request.POST['fila2Rojo'],'2'),' puntos')
+    print('Cantidad en fila 3 ----> Hay ',request.POST['fila3Rojo'],' peones rojos que equivalen a ',ValoresTotalesFila(request.POST['fila3Rojo'],'3'),' puntos')
+    print('Cantidad en fila 4 ----> Hay ',request.POST['fila4Rojo'],' peones rojos que equivalen a ',ValoresTotalesFila(request.POST['fila4Rojo'],'4'),' puntos')
+    print('Cantidad en fila 5 ----> Hay ',request.POST['fila5Rojo'],' peones rojos que equivalen a ',ValoresTotalesFila(request.POST['fila5Rojo'],'0'),' puntos')
+    print('Cantidad en fila 6 ----> Hay ',request.POST['fila6Rojo'],' peones rojos que equivalen a ',ValoresTotalesFila(request.POST['fila6Rojo'],'0'),' puntos')
+    print('Cantidad en fila 7 ----> Hay ',request.POST['fila7Rojo'],' peones rojos que equivalen a ',ValoresTotalesFila(request.POST['fila7Rojo'],'0'),' puntos')
+    print('Cantidad en fila 8 ----> Hay ',request.POST['fila8Rojo'],' peones rojos que equivalen a ',ValoresTotalesFila(request.POST['fila8Rojo'],'0'),' puntos')
 
     return HttpResponse(respuestaBien)
 
@@ -63,6 +71,8 @@ def ValoresTotalesFila(num,fila):
     if fila == '4':
         result=int(num)*1
 
+    if fila == '0':
+        result=int(num)*0
 
     return result
 
