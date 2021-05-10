@@ -85,17 +85,17 @@
       <ul class="collection">
         <li class="collection-item avatar">
           <i class="material-icons circle">mood</i>
-          <span class="title">Jugador Uno</span>
-          <p>Movimiento: 1</p>
-          <span class="title">Puntos: 8</span>
+          <span class="title">Jugador Negro</span>
+          <h5>Movimiento: <p id="movNegro"></p> </h5>
+          <span class="title">Puntos: <p id="puntosNegros"></p></span>
 
           <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
         </li>
         <li class="collection-item avatar">
           <i class="material-icons circle">videogame_asset</i>
-          <span class="title">Jugador Dos</span>
-          <p>Movimiento: 1</p>
-          <span class="title">Puntos: 2</span>
+          <span class="title">Jugador Rojo</span>
+          <h5>Movimiento: <p id="movRojo"></p> </h5>
+          <span class="title">Puntos: <p id="puntosRojos"></p></span>
           <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
         </li>
       </ul>
@@ -106,9 +106,13 @@
   var dragged;
   var jugadaRojo=0;
   var jugadaNegro=0;
+  var jugadaNegroValida=0;
+  var jugadaRojaValida=0;
   var boolRojo=true;
   var boolNegro=true;
   var movPeon2=0;
+  var contMovNegro=0;
+  var sumContNegro=0;
 
   function dragIniciado(event) {
     dragged = event.target;
@@ -119,11 +123,69 @@
 
   function dragFinalizado(event) {
     event.target.style.opacity = "";
+    console.log('rojo valida --> '+jugadaRojaValida);
+    console.log('rojo --> '+jugadaRojo);
+
+    console.log('negra valida --> '+jugadaNegroValida);
+    console.log('negra --> '+jugadaNegro);
+
+    if(jugadaNegro >=0 && jugadaNegroValida==0){
+      if(jugadaNegro >0){
+        jugadaNegro--;
+      }else {
+        jugadaNegro=0;
+      }
+    }
+
+    if(jugadaRojo >=0 && jugadaRojaValida==0){
+      if(jugadaRojo >0){
+        jugadaRojo--;
+      }else {
+        jugadaRojo=0;
+      }
+    }
+    console.log('negra nueva --> '+jugadaNegro);
+    if(jugadaNegro>=1){
+      boolRojo = true;
+      boolNegro=false;
+    }
+    if(jugadaRojo>=1){
+      boolRojo = false;
+      boolNegro=true;
+    }
+
+
+
+    contMovNegro=jugadaNegro;
+    if(contMovNegro>0){
+      contMovRojo=0;
+      contMovNegro++;
+    }
+
+    var contMovRojo=jugadaRojo;
+    if(contMovRojo>0){
+      contMovNegro=0;
+      contMovRojo++;
+    }
+
+    console.log('rojo contador --> '+contMovRojo);
+    console.log('negra contador --> '+contMovNegro);
+
+
+    document.getElementById('movRojo').innerHTML = contMovRojo;
+    document.getElementById('movNegro').innerHTML = contMovNegro;
+
+
+    jugadaRojaValida=0;
+    jugadaNegroValida=0;
+
     evaluarMovimientos();
     //aqui post
     sendDataBack(event.target);
     posicionesPeones();
-    console.log('dragFinalizado')
+    CalcularPuntos();
+    console.log('dragFinalizado');
+
   }
 
   function dragEnter(event) {
@@ -157,21 +219,15 @@
       //console.log(jugadaRojo);
       boolNegro=false;
       boolRojo = true;
-      if(jugadaRojo>=2){
-        jugadaRojo=0;
-        boolRojo = false;
-        boolNegro=true;
-      }
+      document.getElementById('movRojo').innerHTML = jugadaRojo;
+      document.getElementById('movNegro').innerHTML = 0;
     }
     if(dragged.alt == 'Negro' && boolNegro==true){
       jugadaNegro++;
       boolRojo=false;
       boolNegro=true;
-      if(jugadaNegro>=2){
-        jugadaNegro=0;
-        boolRojo = true;
-        boolNegro=false;
-      }
+      document.getElementById('movRojo').innerHTML = 0;
+      document.getElementById('movNegro').innerHTML = jugadaNegro;
     }
   }
   function devolverFichas(limite) {
@@ -203,8 +259,8 @@
         dragged.parentNode.removeChild(dragged);
         dragged.id = "N" + fila;
         event.target.appendChild(dragged);
-
-      }
+        jugadaRojaValida=0;
+        jugadaNegroValida=1;      }
     }
 
 
@@ -235,6 +291,8 @@
         dragged.id = "R" + fila;
 
         event.target.appendChild(dragged);
+        jugadaRojaValida=1;
+        jugadaNegroValida=0;
       }
     }
 
@@ -363,6 +421,27 @@
   }
 
 
+  function CalcularPuntos(){
+    var cont5Negro= contNegro('N5 R4');
+    var cont6Negro= contNegro('N6 R3');
+    var cont7Negro= contNegro('N7 R2');
+    var cont8Negro= contNegro('N8 R1');
+
+
+    var cont1Rojo= contRojo('N1 R8');
+    var cont2Rojo= contRojo('N2 R7');
+    var cont3Rojo= contRojo('N3 R6');
+    var cont4Rojo= contRojo('N4 R5');
+
+
+    var resultadoNegro = 5*parseInt(cont8Negro)+3*parseInt(cont7Negro)+2*parseInt(cont6Negro)+1*parseInt(cont5Negro);
+    var resultadoRojo = 5*parseInt(cont1Rojo)+3*parseInt(cont2Rojo)+2*parseInt(cont3Rojo)+1*parseInt(cont4Rojo);
+
+    document.getElementById('puntosRojos').innerHTML = resultadoRojo;
+    document.getElementById('puntosNegros').innerHTML = resultadoNegro;
+
+  }
+
   function sendDataBack(event1) {
     var cont =0;
     console.log(event1)
@@ -397,7 +476,6 @@
     var cont7Todos= contTodos('N7 R2');
     var cont8Todos= contTodos('N8 R1');
 
-
     var cont1Negro= contNegro('N1 R8');
     var cont2Negro= contNegro('N2 R7');
     var cont3Negro= contNegro('N3 R6');
@@ -416,6 +494,7 @@
     var cont6Rojo= contRojo('N6 R3');
     var cont7Rojo= contRojo('N7 R2');
     var cont8Rojo= contRojo('N8 R1');
+
 
 
     objetoEnviar = {
