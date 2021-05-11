@@ -75,7 +75,6 @@
         <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
         <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
         <img class="img_peon" id="R1" draggable='true'  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">
-
       </div>
     </span>
   </div>
@@ -100,7 +99,14 @@
         </li>
       </ul>
     </span>
+
+    <input type="text" name="ficha" value="R" id="color">
+    <input type="text" name="fichainicial" value="0" id="posicion1">
+    <input type="text" name="fichafinal" value="7" id="posicionfinal">
+    <button type="button" name="button" onclick="Moverficha()">Moverse</button>
+
   </div>
+
 </div>
 <script>
   var dragged;
@@ -113,6 +119,64 @@
   var movPeon2=0;
   var contMovNegro=0;
   var sumContNegro=0;
+
+  function Moverficha(){
+    var color = document.getElementById('color').value;
+    var posInicial = document.getElementById('posicion1').value;
+    var posFinal = document.getElementById('posicionfinal').value;
+
+    //alert(color+'  '+posInicial+'  '+posFinal);
+
+    var filaNegra = ["N1 R8", "N2 R7","N3 R6","N4 R5","N5 R4","N6 R3","N7 R2","N8 R1"];
+
+    var filaRoja = filaNegra.reverse();
+
+    if(color == "R"){
+      var idFilainicial =filaRoja[posInicial];
+      var idFilaFinal =filaRoja[posFinal];
+
+      // eliminar peon
+
+      //alert(idFilainicial)
+      var nodeFila= document.getElementById(idFilainicial);
+      var idPeon= color+""+(parseInt(posInicial)+1);
+      var peon= document.getElementById(idPeon);
+      nodeFila.removeChild(peon);
+
+
+      // agregar nuevo peon
+
+      let imgNueva = '<img class="img_peon" id="R'+(parseInt(posFinal)+1)+'" draggable="true"  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-rojo.png' %}" width="45px" alt="Rojo">';
+      let filaFinal = document.getElementById(idFilaFinal);
+      filaFinal.innerHTML += imgNueva;
+
+
+    }else{
+      // la ficha es negra
+      var filaNegra2 = ["N1 R8", "N2 R7","N3 R6","N4 R5","N5 R4","N6 R3","N7 R2","N8 R1"];
+
+      var idFilainicialN =filaNegra2[posInicial];
+      var idFilaFinalN =filaNegra2[posFinal];
+
+      // eliminar peon
+
+      //alert(idFilainicial)
+      var nodeFilaN= document.getElementById(idFilainicialN);
+      var idPeonN= color+""+(parseInt(posInicial)+1);
+      var peonN= document.getElementById(idPeonN);
+      nodeFilaN.removeChild(peonN);
+
+
+      // agregar nuevo peon
+
+      let imgNuevaN = '<img class="img_peon" id="N'+(parseInt(posFinal)+1)+'" draggable="true"  ondragstart="dragIniciado(event)" ondragend="dragFinalizado(event)"  src="{% static 'img/peon-negro.png' %}" width="40px" alt="Negro">';
+      let filaFinalN = document.getElementById(idFilaFinalN);
+      filaFinalN.innerHTML += imgNuevaN;
+
+    }
+
+  }
+
 
   function dragIniciado(event) {
     dragged = event.target;
