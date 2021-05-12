@@ -16,26 +16,19 @@ def init_game (request):
 
 def engine_game (request):
     print()
-    print('Tabla ----> ',request.POST['tablaPeones'])
+    print('request',request.POST.q('totalTodos'))
+    """ print('Tabla ----> ',request.POST['tablaPeones'])
     print()
     print('Ficha ----> ',request.POST['contenidoPeon'])
     print('Id Ficha ----> ',request.POST['id'])
-    #print('Numero en fila ----> ',request.POST['Num_Peones_Fila'])
     print()
     movPeon2 = PeonesMov2(request.POST['Num_Peones_Fila'])
     print(movPeon2)
     print()
     tb= analizarTablaPeones(request.POST['tablaPeones'])
+    print('Cantidad en totalTodos ----> Hay ',request.POST['totalTodos'])
 
-    print()
-    print('Cantidad en fila 1 ----> ',request.POST['fila1Todos'])
-    print('Cantidad en fila 2 ----> ',request.POST['fila2Todos'])
-    print('Cantidad en fila 3 ----> ',request.POST['fila3Todos'])
-    print('Cantidad en fila 4 ----> ',request.POST['fila4Todos'])
-    print('Cantidad en fila 5 ----> ',request.POST['fila5Todos'])
-    print('Cantidad en fila 6 ----> ',request.POST['fila6Todos'])
-    print('Cantidad en fila 7 ----> ',request.POST['fila7Todos'])
-    print('Cantidad en fila 8 ----> ',request.POST['fila8Todos'])
+
     print()
     print('Cantidad en fila 1 ----> Hay ',request.POST['fila1Negro'],' peones negros que equivalen a ',ValoresTotalesFila(request.POST['fila1Negro'],'0'),' puntos')
     print('Cantidad en fila 2 ----> Hay ',request.POST['fila2Negro'],' peones negros que equivalen a ',ValoresTotalesFila(request.POST['fila2Negro'],'0'),' puntos')
@@ -55,7 +48,7 @@ def engine_game (request):
     print('Cantidad en fila 6 ----> Hay ',request.POST['fila6Rojo'],' peones rojos que equivalen a ',ValoresTotalesFila(request.POST['fila6Rojo'],'0'),' puntos')
     print('Cantidad en fila 7 ----> Hay ',request.POST['fila7Rojo'],' peones rojos que equivalen a ',ValoresTotalesFila(request.POST['fila7Rojo'],'0'),' puntos')
     print('Cantidad en fila 8 ----> Hay ',request.POST['fila8Rojo'],' peones rojos que equivalen a ',ValoresTotalesFila(request.POST['fila8Rojo'],'0'),' puntos')
-
+ """
     return HttpResponse(respuestaBien)
 
 def ValoresTotalesFila(num,fila):
