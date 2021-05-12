@@ -441,6 +441,218 @@
         return contRojo;
     }
 
+    function dragIniciado(event) {
+        dragged = event.target;
+        event.target.style.opacity = .5;
+        console.log('dragIniciado')
+    }
+
+    function dragFinalizado(event) {
+        event.target.style.opacity = "";
+        if (jugadaNegro >= 0 && jugadaNegroValida == 0) {
+            if (jugadaNegro > 0) {
+                jugadaNegro--;
+            } else {
+                jugadaNegro = 0;
+            }
+        }
+
+        if (jugadaRojo >= 0 && jugadaRojaValida == 0) {
+            if (jugadaRojo > 0) {
+                jugadaRojo--;
+            } else {
+                jugadaRojo = 0;
+            }
+        }
+        if (jugadaNegro >= 1) {
+            boolRojo = true;
+            boolNegro = false;
+        }
+        if (jugadaRojo >= 1) {
+            boolRojo = false;
+            boolNegro = true;
+        }
+
+        contMovNegro = jugadaNegro;
+        if (contMovNegro > 0) {
+            contMovRojo = 0;
+            contMovNegro++;
+        }
+
+        var contMovRojo = jugadaRojo;
+        if (contMovRojo > 0) {
+            contMovNegro = 0;
+            contMovRojo++;
+        }
+
+        document.getElementById('movRojo').innerHTML = contMovRojo;
+        document.getElementById('movNegro').innerHTML = contMovNegro;
+
+        jugadaRojaValida = 0;
+        jugadaNegroValida = 0;
+
+        evaluarMovimientos();
+        //aqui post
+        posicionesPeones();
+        sendDataBack(event.target);
+        CalcularPuntos();
+        console.log('dragFinalizado');
+
+    }
+
+    function dragEnter(event) {
+        if (event.target.className == "row") {
+            event.target.style.background = "yellow";
+        }
+    }
+
+    function dragLeave(event) {
+        if (event.target.className == "row") {
+            event.target.style.background = "";
+        }
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        if (event.target.className == "row inicial filaNegra8 filaRoja1" || event.target.className ==
+            "row inicial filaNegra1 filaRoja8") {
+            devolverFichas(30);
+
+        } else if (event.target.className.includes("row")) {
+            devolverFichas(6);
+
+        } else {
+            console.log('No puede tener mas de 6 peones');
+        }
+    }
+
+    function evaluarMovimientos() {
+        if (dragged.alt == 'Rojo' && boolRojo == true) {
+            jugadaRojo++;
+            boolNegro = false;
+            boolRojo = true;
+            document.getElementById('movRojo').innerHTML = jugadaRojo;
+            document.getElementById('movNegro').innerHTML = 0;
+        }
+        if (dragged.alt == 'Negro' && boolNegro == true) {
+            jugadaNegro++;
+            boolRojo = false;
+            boolNegro = true;
+            document.getElementById('movRojo').innerHTML = 0;
+            document.getElementById('movNegro').innerHTML = jugadaNegro;
+        }
+    }
+
+    function devolverFichas(limite) {
+        var x = event.target.innerHTML;
+        var a = event.target;
+        var cont = 0;
+        var fila = 0;
+        var posFila = 0;
+        if (dragged.alt == "Negro" && boolNegro == true && jugadaNegro <= 2) {
+
+            for (var i = 0; i < x.length; i++) {
+                if (x.substring(i, i + 8) == "img_peon") {
+                    cont++;
+                }
+            }
+            movPeon2 = cont;
+
+            for (var i = 0; i < x.length; i++) {
+                if (x.substring(i, i + 9) == "filaNegra") {
+                    posFila = i;
+                }
+            }
+
+            fila = x.substring(posFila + 9, posFila + 10);
+            idPeon = dragged.id;
+            if (cont < limite && fila >= idPeon[1]) {
+                event.target.style.background = "";
+                dragged.parentNode.removeChild(dragged);
+                dragged.id = "N" + fila;
+                event.target.appendChild(dragged);
+                jugadaRojaValida = 0;
+                jugadaNegroValida = 1;
+            }
+        }
+
+        if (dragged.alt == "Rojo" && boolRojo == true && jugadaRojo <= 2) {
+            for (var i = 0; i < x.length; i++) {
+                if (x.substring(i, i + 8) == "img_peon") {
+                    cont++;
+                }
+            }
+            movPeon2 = cont;
+
+            for (var i = 0; i < x.length; i++) {
+                if (x.substring(i, i + 8) == "filaRoja") {
+                    posFila = i;
+                }
+            }
+
+            fila = x.substring(posFila + 8, posFila + 9);
+            idPeon = dragged.id;
+            if (cont < limite && fila >= idPeon[1]) {
+                event.target.style.background = "";
+                dragged.parentNode.removeChild(dragged);
+                dragged.id = "R" + fila;
+                event.target.appendChild(dragged);
+                jugadaRojaValida = 1;
+                jugadaNegroValida = 0;
+            }
+        }
+
+    }
+
+    function posicionesPeones() {
+        arrayTotalFichasFila = []
+        nombresFilas.forEach(fila => {
+            var cont1 = 0;
+            var x = document.getElementById(fila).innerHTML;
+            for (var i = 0; i < x.length; i++) {
+                if (x.substring(i, i + 3) == "id=") {
+                    cont1++;
+                }
+            }
+            arrayTotalFichasFila.push(cont1)
+        })
+        console.log('arrayTotalFichasFila', arrayTotalFichasFila)
+    }
+
+    function contNegro(id) {
+        var contNegro = 0;
+        var x = document.getElementById(id).innerHTML;
+        for (var i = 0; i < x.length; i++) {
+            if (x.substring(i, i + 5) == 'id="N') {
+                contNegro++;
+            }
+        }
+        return contNegro;
+    }
+
+
+    function contTodos(id) {
+        var contTodos = 0;
+        var x = document.getElementById(id).innerHTML;
+        for (var i = 0; i < x.length; i++) {
+            if (x.substring(i, i + 3) == "id=") {
+                contTodos++;
+            }
+        }
+        return contTodos;
+    }
+
+    function contRojo(id) {
+        var contRojo = 0;
+        var x = document.getElementById(id).innerHTML;
+        for (var i = 0; i < x.length; i++) {
+            if (x.substring(i, i + 5) == 'id="R') {
+                contRojo++;
+            }
+        }
+        return contRojo;
+    }
+
 
     function CalcularPuntos() {
         var cont5Negro = contNegro('N5 R4');
@@ -448,6 +660,33 @@
         var cont7Negro = contNegro('N7 R2');
         var cont8Negro = contNegro('N8 R1');
 
+
+        var cont1Rojo = contRojo('N1 R8');
+        var cont2Rojo = contRojo('N2 R7');
+        var cont3Rojo = contRojo('N3 R6');
+        var cont4Rojo = contRojo('N4 R5');
+
+
+        var resultadoNegro = 5 * parseInt(cont8Negro) + 3 * parseInt(cont7Negro) + 2 * parseInt(cont6Negro) + 1 * parseInt(cont5Negro);
+        var resultadoRojo = 5 * parseInt(cont1Rojo) + 3 * parseInt(cont2Rojo) + 2 * parseInt(cont3Rojo) + 1 * parseInt(cont4Rojo);
+
+        document.getElementById('puntosRojos').innerHTML = resultadoRojo;
+        document.getElementById('puntosNegros').innerHTML = resultadoNegro;
+
+    function CalcularPuntos() {
+        var cont5Negro = contNegro('N5 R4');
+        var cont6Negro = contNegro('N6 R3');
+        var cont7Negro = contNegro('N7 R2');
+        var cont8Negro = contNegro('N8 R1');
+    }
+
+    function contarFichasNegras() {
+        arrayTotalFichasNegrasFila = []
+        nombresFilas.forEach(fila => {
+            arrayTotalFichasNegrasFila.push(contNegro(fila))
+        })
+        console.log('arrayTotalFichasNegrasFila', arrayTotalFichasNegrasFila)
+    }
 
         var cont1Rojo = contRojo('N1 R8');
         var cont2Rojo = contRojo('N2 R7');
@@ -471,6 +710,87 @@
         console.log('arrayTotalFichasNegrasFila', arrayTotalFichasNegrasFila)
     }
 
+    function contarFichasRojas() {
+        arrayTotalFichasRojasFila = []
+        nombresFilas.forEach(fila => {
+            arrayTotalFichasRojasFila.push(contRojo(fila))
+        })
+        console.log('arrayTotalFichasRojasFila', arrayTotalFichasRojasFila)
+    }
+
+    function sendDataBack(event1) {
+        var cont = 0;
+        console.log(event1)
+        var dataPeon = event1.outerHTML;
+        var idPeon = '';
+        var tabla = event.target.offsetParent.innerHTML;
+        var fila = event.target.parentElement.innerHTML;
+        console.log(fila.length);
+
+        for (var i = 0; i < fila.length; i++) {
+            if (fila.substring(i, i + 8) == "img_peon") {
+                cont++;
+            }
+        }
+
+        for (var i = 0; i < dataPeon.length; i++) {
+            if (dataPeon.substring(i, i + 3) == "id=") {
+                idPeon = dataPeon.substring(i + 4, i + 6);
+            }
+        }
+
+        contarFichasNegras()
+        contarFichasRojas()
+
+        console.log('Total todos: ', arrayTotalFichasFila)
+        var objEnviar2 = {
+            totalTodosFila: [],
+            totalNegrosFila: [],
+            totalRojosFila: []
+        }
+
+        objEnviar2.totalTodos = arrayTotalFichasFila;
+        objEnviar2.totalNegrosFila = arrayTotalFichasNegrasFila;
+        objEnviar2.totalRojosFila = arrayTotalFichasRojasFila;
+
+        /*objetoEnviar = {
+            "contenidoPeon": dataPeon,
+            "id": idPeon,
+            "Num_Peones_Fila": cont - 1,
+            "tablaPeones": tabla,
+            "totalTodos": {
+                arrayTotalFichasFila
+            },
+            "fila1Negro": cont1Negro,
+            "fila2Negro": cont2Negro,
+            "fila3Negro": cont3Negro,
+            "fila4Negro": cont4Negro,
+            "fila5Negro": cont5Negro,
+            "fila6Negro": cont6Negro,
+            "fila7Negro": cont7Negro,
+            "fila8Negro": cont8Negro,
+            "fila1Rojo": cont1Rojo,
+            "fila2Rojo": cont2Rojo,
+            "fila3Rojo": cont3Rojo,
+            "fila4Rojo": cont4Rojo,
+            "fila5Rojo": cont5Rojo,
+            "fila6Rojo": cont6Rojo,
+            "fila7Rojo": cont7Rojo,
+            "fila8Rojo": cont8Rojo,
+        }*/
+
+        console.log('objetoEnviar', objEnviar2)
+
+        $.post('/engine/', objEnviar2, function(data, status) {
+
+            var rta = JSON.parse(data)
+            console.log('enviar datos a back', )
+
+            if (rta['status'] == 1) {
+                alert(rta['message'])
+            }
+        })
+    }
     function contarFichasRojas() {
         arrayTotalFichasRojasFila = []
         nombresFilas.forEach(fila => {
